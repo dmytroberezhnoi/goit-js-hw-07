@@ -54,7 +54,6 @@ function onImageClick(event) {
       instance.close(() =>
         window.removeEventListener("keydown", onEscKeyPress)
       );
-      console.log("нажатие");
     }
   }
 }
