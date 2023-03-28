@@ -28,7 +28,7 @@ function createElementGalleryMarkup(images) {
     .join("");
 }
 
-// 2. Реалізація делегування на ul.gallery
+// 2. Реалізація делегування, відкриття/закриття модального вікна
 
 listEl.addEventListener("click", onImageClick);
 
@@ -46,6 +46,15 @@ function onImageClick(event) {
 `);
 
   instance.show();
-}
 
-// 3. Підключення скрипту і стилів бібліотеки модального вікна
+  window.addEventListener("keydown", onEscKeyPress);
+
+  function onEscKeyPress(event) {
+    if (event.code === "Escape") {
+      instance.close(() =>
+        window.removeEventListener("keydown", onEscKeyPress)
+      );
+      console.log("нажатие");
+    }
+  }
+}
